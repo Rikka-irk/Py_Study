@@ -1,3 +1,4 @@
+# задание 2
 import random
 
 
