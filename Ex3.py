@@ -11,12 +11,13 @@ def break_paragraph(p):
         if p[i] in separators:
             s_split.append(p[j:i + 1])
             j = i + 1
+
+        # дальше идет неудачная попытка удалить лишние пробелы из полученного списка предложений((
+    for k in range(len(s_split)):
+        s_split[k].strip(' ')
+        k += 1
+
     return s_split
 
 
-def print_list_with_linebreaks(l):
-    for i in len(l):
-        print(i + 1, ': ', l[i])
-
-
-print_list_with_linebreaks(break_paragraph(s))
+print('\n'.join(break_paragraph(s)))
