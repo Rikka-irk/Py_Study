@@ -5,6 +5,7 @@ letter = 't'
 
 system_counter = string.count(letter)
 
+
 def count_letters(l, s):
     """ Returns the number of occurrences of pointed letter L in string S
     """
@@ -14,11 +15,9 @@ def count_letters(l, s):
             c += 1
     return c
 
-letters = count_letters(letter,string)
+
+letters = count_letters(letter, string)
 if system_counter == letters:
-    print("Count of letter '",letter, "' = ", letters)
+    print("Count of letter '", letter, "' = ", letters)
 else:
     print("Error: smth wrong")
-
-
-
