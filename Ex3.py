@@ -5,4 +5,18 @@ s = "«Славные парни» — комедийный детектив р�
 
 def break_paragraph(p):
     separators = ['.', '?', '!']
-    i = 0
+    j = 0
+    s_split = []
+    for i in range(len(p)):
+        if p[i] in separators:
+            s_split.append(p[j:i + 1])
+            j = i + 1
+    return s_split
+
+
+def print_list_with_linebreaks(l):
+    for i in len(l):
+        print(i + 1, ': ', l[i])
+
+
+print_list_with_linebreaks(break_paragraph(s))
