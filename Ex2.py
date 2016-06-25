@@ -1,8 +1,9 @@
 # задание 2
-import random
+
+import GenerateList
 
 
-def convert_str_to_dict(s):  # строку с ловарь и убираем лишние пробелы в начале и конце
+def convert_str_to_dict(s):  # конвертируем строку в словарь и убираем лишние пробелы в начале и конце
     d = {}
     s = s.lower()
     s = s.strip(' ')
@@ -11,16 +12,6 @@ def convert_str_to_dict(s):  # строку с ловарь и убираем л
         d = s.split(' ')
         i += 1
     return d
-
-
-def generate_num_list():  # создаем список из рандомных чисел
-    l = 20
-    lst = []
-    i = 0
-    while i < l:
-        lst.append(random.randint(1, 5))
-        i += 1
-    return lst
 
 
 def count_repetition(l):  # подсчитываем количество повторений каждого символа строки
@@ -35,7 +26,7 @@ def count_repetition(l):  # подсчитываем количество пов
 
 string = '                     В траве сидел кузнечик В траве сидел кузнечик Совсем как огуречик Зелененький он был        '
 
-result_num = count_repetition(generate_num_list())
+result_num = count_repetition(GenerateList.num_list(50, 15))
 result_str = count_repetition(convert_str_to_dict(string))
 print(result_str)
 print(result_num)
