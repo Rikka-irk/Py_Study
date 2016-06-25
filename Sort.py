@@ -1,51 +1,52 @@
 # сортировки вручную (quick sort, слиянием, и что то еще (асимптотическая сложность<n^2))
 import random
 
-import GenerateList
+import GenerateList  # импортируем модуль генерации массива арндомных символов
 
 
-def qsort(A):
-    if len(A) <= 1:
-        return A
+def qsort(a):  # функция быстрой сортировки
+    if len(a) <= 1:  # если массив состоит из одного элемента или менее, то просто возвращаем массив
+        return a
     else:
-        a = random.choice(A)
-        L = []
-        M = []
-        R = []
-        for i in A:
-            if i < a:
-                L.append(i)
-            elif i > a:
-                R.append(i)
+        rn = random.choice(a)  # выбираем рандомный элемент массива
+        l = []
+        m = []
+        r = []
+        for i in a:  # перебираем все элементы массива
+            if i < rn:  # если он меньше выбранного элемента а, то вносим его в массив l
+                l.append(i)
+            elif i > rn:
+                r.append(i)  # если больше, то вносим его в массив r
             else:
-                M.append(i)
-        return qsort(L) + M + qsort(R)
+                m.append(i)  # все элементы, равные выбранному, вносим в массив m
+        return qsort(l) + m + qsort(r)  # собираем получившиеся массивы
 
 
-def merge(A, B):
-    C = []
+def merge(a, b):
+    c = []
     i = 0
     j = 0
-    while i < len(A) and j < len(B):
-        if A[i] <= B[j]:
-            C.append(A[i])
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            c.append(a[i])
             i += 1
         else:
-            C.append(B[j])
+            c.append(b[j])
             j += 1
-    C += A[i:] + B[j:]
-    return C
+    c += a[i:] + b[j:]
+    return c
 
 
-def merge_sort(A):
-    if len(A) <= 1:
-        return A
+def merge_sort(a):
+    if len(a) <= 1:
+        return a
     else:
-        L = A[:len(A) // 2]
-        R = A[len(A) // 2:]
-    return merge(merge_sort(L), merge_sort(R))
+        l = a[:len(a) // 2]
+        r = a[len(a) // 2:]
+    return merge(merge_sort(l), merge_sort(r))
 
-l1 = GenerateList.num_list(15, 99)
-print(l1)
-print(qsort(l1))
-print(merge_sort(l1))
+
+l = GenerateList.num_list(15, 99)
+print(l)
+print(qsort(l))
+print(merge_sort(l))
