@@ -22,7 +22,30 @@ def qsort(A):
         return qsort(L) + M + qsort(R)
 
 
+def merge(A, B):
+    C = []
+    i = 0
+    j = 0
+    while i < len(A) and j < len(B):
+        if A[i] <= B[j]:
+            C.append(A[i])
+            i += 1
+        else:
+            C.append(B[j])
+            j += 1
+    C += A[i:] + B[j:]
+    return C
+
+
+def merge_sort(A):
+    if len(A) <= 1:
+        return A
+    else:
+        L = A[:len(A) // 2]
+        R = A[len(A) // 2:]
+    return merge(merge_sort(L), merge_sort(R))
+
 l1 = GenerateList.num_list(15, 99)
-l2 = GenerateList.num_list(15, 99)
 print(l1)
 print(qsort(l1))
+print(merge_sort(l1))
